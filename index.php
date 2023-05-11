@@ -45,8 +45,11 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
 
 </head>
 <body>
-    <div><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3>
-    <h1>게시판입니다.</h1></div>
+    <div><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3></div>
+    
+    <h1>게시판입니다.</h1>
+
+    <!-- 만약 if(ajax값이 게시판이면 저것을 불러와라 switch문도 생각해볼것) -->
     <form action="/cs/logout.php" method="POST"> 
     <input type="submit" value="Logout"></button>
     </form> 
