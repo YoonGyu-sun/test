@@ -62,7 +62,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
 <body>
     <div><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3></div>
     
-    <h1>게시판입니다.</h1>
+    <h2>게시판입니다.</h2>
     <h2 id ="text"></h2>
 
     <!-- 만약 if(ajax값이 게시판이면 저것을 불러와라 switch문도 생각해볼것) -->
