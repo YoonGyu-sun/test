@@ -94,18 +94,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
                 <a href = "#"> 댓글 삭제</a>
                 <h6>ㅡㅡㅡㅡㅡㅡㅡㅡㅡ</h6>
                     <?php } ?>
-                
-                    
-        
-        
-        
-
 
         </div>
 
                 
-
-
 
 
 <!-- 댓글 작성하기 -->

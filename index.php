@@ -38,6 +38,21 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
     }
     
     </style>
+    <script>
+        // Ajax로 서버시간 0.5초마다 출력
+            function sendRequest() {
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function() {
+				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
+					document.getElementById("text").innerHTML = httpRequest.responseText;
+				}
+			};
+			httpRequest.open("GET", "/cs/include/ajax.php");
+			httpRequest.send();
+		}
+		window.setInterval("sendRequest()", 1);	// 매 0.5초마다 Ajax 요청을 보냄.
+
+    </script>
     
  
 
@@ -48,6 +63,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
     <div><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3></div>
     
     <h1>게시판입니다.</h1>
+    <h2 id ="text"></h2>
 
     <!-- 만약 if(ajax값이 게시판이면 저것을 불러와라 switch문도 생각해볼것) -->
     <form action="/cs/logout.php" method="POST"> 
