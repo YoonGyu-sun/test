@@ -4,27 +4,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ajax Request</title>
-	<script>
-		function sendRequest() {
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange = function() {
-				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
-					document.getElementById("text").innerHTML = httpRequest.responseText;
-				}
-			};
-			httpRequest.open("GET", "/cs/ajax/ajax.php");
-			httpRequest.send();
-		}
-		window.setInterval("sendRequest()", 580);	// 매 0.5초마다 Ajax 요청을 보냄.
-
-    </script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
 </head>
-
 <body>
+	<button id="myButton">버튼</button>
+	<p id = "view_ajax">
 
-	<h1>주기적으로 Ajax 요청하기</h1>
-	<p id="text"></p>
+	<script>
+	// $(document).ready(function(){
+	// 	$("#myButton").click(function(){
+	// 		alert("Button clicked!");
+	// 	});
+	// });
+
+	let count = 0;
+            function clickCounter() {
+              count++;
+              
+              if (count === 1) {
+                $.ajax({
+                  url : "/cs/ajax/ajax.php",
+                  type : "POST",
+                  data : { data1: 62, count: 1 },
+                  success : function(data, status) {
+                         $("#view_ajax").html(data);	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+                     }
+                });
+
+              } else if (count === 2) {
+
+                $.ajax({
+				  url : "/cs/ajax/ajax.php",
+                  type : "POST",
+                  data : { data1: 62, count: 2 },
+                  success : function(data, status) {
+                         $("#view_ajax").html(data);	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+                     }
+                });
+			}
+		}
+		
+        $(document).ready(function() {
+            $("#myButton").click(clickCounter);
+        });
+    </script>
+
+
 	
 </body>
-
 </html>

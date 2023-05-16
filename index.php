@@ -27,15 +27,33 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
         float: right;
         padding: 50px;
     }
-    div button{
+    
+    
+    #left{
         float: right;
     }
-    button input{
-        float: right;
-    }
-    button{
-        
-    }
+    #right{
+    float:right;
+}
+    
+
+
+#search{
+  width: 400px;
+  height: 35px;
+  float : left;
+  
+}
+label{
+    position:relative
+}
+button {
+  width: 60px;
+  height: 28px;
+  cursor: pointer;
+}
+
+
     
     </style>
     <script>
@@ -53,22 +71,46 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
 		window.setInterval("sendRequest()", 1);	// 매 0.5초마다 Ajax 요청을 보냄.
 
     </script>
-    
- 
-
-
 
 </head>
 <body>
-    <div><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3></div>
+    <div id="right"><h3><?php echo "".$_SESSION['loginid']."님"; ?></h3></div>
     
     <h2>게시판입니다.</h2>
+    
     <h2 id ="text"></h2>
 
     <!-- 만약 if(ajax값이 게시판이면 저것을 불러와라 switch문도 생각해볼것) -->
     <form action="/cs/logout.php" method="POST"> 
-    <input type="submit" value="Logout"></button>
+    <input type="submit" id = "left" value="Logout"></button>
     </form> 
+
+
+
+
+        <h4>검색 버튼</h4>
+    <div>
+    <form action= "/cs/include/search_result.php" method="get">
+    
+    <select name = "catgo">
+        <option value = "titlet">제목</option>
+        <option value = "textt">내용</option>
+        <option value = "namet">글쓴이</option>
+    </select>
+
+
+    <label>
+    <input type = "text" name = "search" id = "search" required="required" /> <button>검색</button>
+    </label>
+
+    </form>
+    </div>
+
+
+
+
+
+    
     <h4>글을 자유롭게 작성해보세요</h4>
     
 
@@ -114,8 +156,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
         $next_page = $total_pages;
     }
 
-    $prev_link = "<a href='?page=$prev_page'>이전</a>";
-    $next_link = "<a href='?page=$next_page'>다음</a>";
+    $prev_link = "<a href='?page=1'>이전</a>";
+    $next_link = "<a href='?page=$total_pages'>다음</a>";
     // END. 이전 페이지와 다음 페이지 링크
 
     // 페이지 번호 링크 만들기
