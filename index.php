@@ -1,10 +1,6 @@
 <?php 
 include($_SERVER['DOCUMENT_ROOT'].'/cs/include/dbinfo.php');
 include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="kr">
@@ -12,50 +8,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/css/index_style.css"> -->
+    <link rel="stylesheet" href="/cs/css/index_style.css">
     <title>게시판</title>
-<style>
-    table, th, td {
-        border : 3px solid grey;
-    }
-    table {
-        border-collapse:collapse; 
-    }
-    td { text-align: center; height:45px;}
-    th {height:28px;}
-    div h3 {
-        float: right;
-        padding: 50px;
-    }
-    
-    
-    #left{
-        float: right;
-    }
-    #right{
-    float:right;
-}
-    
-
-
-#search{
-  width: 400px;
-  height: 35px;
-  float : left;
-  
-}
-label{
-    position:relative
-}
-button {
-  width: 60px;
-  height: 28px;
-  cursor: pointer;
-}
-
-
-    
-    </style>
     <script>
         // Ajax로 서버시간 0.5초마다 출력
             function sendRequest() {
@@ -69,6 +23,7 @@ button {
 			httpRequest.send();
 		}
 		window.setInterval("sendRequest()", 1);	// 매 0.5초마다 Ajax 요청을 보냄.
+        
 
     </script>
 
@@ -83,11 +38,9 @@ button {
     <!-- 만약 if(ajax값이 게시판이면 저것을 불러와라 switch문도 생각해볼것) -->
     <form action="/cs/logout.php" method="POST"> 
     <input type="submit" id = "left" value="Logout"></button>
-    </form> 
+    </form>     
 
-
-
-
+    <!-- 검색입니다. -->
         <h4>검색 버튼</h4>
     <div>
     <form action= "/cs/include/search_result.php" method="get">
@@ -105,14 +58,8 @@ button {
 
     </form>
     </div>
-
-
-
-
-
     
-    <h4>글을 자유롭게 작성해보세요</h4>
-    
+    <h4>글을 자유롭게 작성해보세요</h4>    
 
 <table>
     <thead>

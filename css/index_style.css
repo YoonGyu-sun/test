@@ -10,11 +10,28 @@ div h3 {
     float: right;
     padding: 50px;
 }
-div button{
+
+
+#left{
     float: right;
 }
-button input{
-    float: right;
+#right{
+float:right;
 }
 
-    
+
+
+#search{
+width: 400px;
+height: 35px;
+float : left;
+
+}
+label{
+position:relative
+}
+button {
+width: 60px;
+height: 28px;
+cursor: pointer;
+}
