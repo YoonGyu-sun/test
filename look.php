@@ -34,7 +34,7 @@ $session = $_SESSION['loginid'];
         $stmt->execute();        
         $stmt->bind_result($count);    
         $stmt->fetch();
-$namet = $row['namet'];
+        $namet = $row['namet'];
 // 위 변수 선언은 굳이 할 필요 없는데 해버려서 냅둔 거
 
 
@@ -51,6 +51,17 @@ $namet = $row['namet'];
     <link href="\cs\css\look_style.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title> 글 </title>
+
+
+    <style>
+
+table, th, td {
+  border: 1px solid black;
+}
+.nse_content{width:660px;height:500px}
+
+</style>
+
 </head>
 
 <body>
@@ -79,8 +90,7 @@ $namet = $row['namet'];
     <div><button onclick = "clickCounter()" style="cursor:pointer" >댓글 보기</button></div>                  
 
         
-    
-
+<!-- AJAX를 활용한 댓글 script-->
 <script>
     let count = 0;
     var session = "<?php echo $session; ?>";
@@ -109,11 +119,9 @@ $namet = $row['namet'];
 </script>
 
 
-            
-
 <!-- 댓글 작성하기 -->
         <div class = "answer_view">
-            <label for = "story"> 댓글은 작성하세요 </label>
+            <label for = "story"> 댓글을 작성하세요 </label>
     
             <form action="/cs/answering.php?idx= <?php echo $row['idx']?>" method="POST">
         <textarea id="content" name="content" rows="10" cols="43"></textarea>
@@ -121,7 +129,47 @@ $namet = $row['namet'];
             </form>
         </div>
         
+        <script type="text/javascript" src="/cs/nse/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script>
+</head>
+
+
+
+<p>
+    <form name="nse" action="./nse/add_db_nse.php" method="post">
+    
+    <table>
+  <tr>
+    <td>내용</td>
+    <td>
+    <textarea name="ir1" id="ir1" class="nse_content" rows="10" cols="100"></textarea>
+    <script type="text/javascript">
+        var oEditors = [];
+        nhn.husky.EZCreator.createInIFrame({
+            oAppRef: oEditors,
+            elPlaceHolder: "ir1",
+            sSkinURI: "./nse/nse_files/SmartEditor2Skin.html",
+            fCreator: "createSEditor2"
+        });
+        function submitContents(elClickedObj) {
+            // 에디터의 내용이 textarea에 적용됩니다.
+            oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+            // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
         
+            try {
+                elClickedObj.form.submit();
+    } catch(e) {}
+}
+</script>
+
+    </td>
+  </tr>
+  <tr>
+    <td>첨부파일 및 전송</td>
+    <td><input type="submit" onclick="submitContents(this)" value="전송" /></td>
+  </tr>
+</table>
+</p>
+</form>
 </body>
 </html>
 

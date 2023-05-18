@@ -1,48 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8" />
+<title>네이버 스마트 에디터 적용하기</title>
+<style>
 
-    <style>
-        table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td {
+table, th, td {
   border: 1px solid black;
-  padding : 0px;
-  text-align: center;
 }
-#nse{
-    margin: 0px;
+.nse_content{width:660px;height:500px}
 
-}
-
-    </style>
+</style>
+<script type="text/javascript" src="/cs/nse/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
+    <form name="nse" action="add_db_nse.php" method="post">
     
-<table>
-  <tr>
-    <td>제목</td>
-    <td>게시글 2</td>
-  </tr>
+    
+
+    <table>
   <tr>
     <td>내용</td>
     <td>
-    <form name="nse" id = "nse" action="add_db_nse.php" method="post">
-    
-    <textarea name="ir1" id="ir1" class="nse_content" ></textarea>
+    <textarea name="ir1" id="ir1" class="nse_content" rows="10" cols="100"></textarea>
     <script type="text/javascript">
         var oEditors = [];
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "ir1",
-            sSkinURI: "/cs/nse/nse_files/SmartEditor2Skin.html",
+            sSkinURI: "./nse_files/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
         function submitContents(elClickedObj) {
@@ -58,7 +44,15 @@ td {
 
     </td>
   </tr>
+  <tr>
+    <td>첨부파일 및 전송</td>
+    <td><input type="submit" onclick="submitContents(this)" value="전송" /></td>
+  </tr>
 </table>
 
+    
+    
+    
+</form>
 </body>
 </html>

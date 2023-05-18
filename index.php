@@ -45,12 +45,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
     <div>
     <form action= "/cs/include/search_result.php" method="get">
     
-    <select name = "catgo">
+    <select name = "catgo" id="catgo">
         <option value = "titlet">제목</option>
         <option value = "textt">내용</option>
         <option value = "namet">글쓴이</option>
     </select>
-
+  <!-- 검색 후에도 값이 남아있게 해야하는데 js를 썼음 난 form으로 보내서.. -->
 
     <label>
     <input type = "text" name = "search" id = "search" required="required" /> <button>검색</button>
@@ -58,6 +58,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/cs/include/ss.php');
 
     </form>
     </div>
+   
+    
     
     <h4>글을 자유롭게 작성해보세요</h4>    
 
